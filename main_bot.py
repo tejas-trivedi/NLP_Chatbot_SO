@@ -77,14 +77,6 @@ def main():
             print("Please, set bot token through --token or TELEGRAM_TOKEN env variable")
             return
         token = os.environ["TELEGRAM_TOKEN"]
-
-    #################################################################
-    
-    # Your task is to complete dialogue_manager.py and use your 
-    # advanced DialogueManager instead of SimpleDialogueManager. 
-    
-    # This is the point where you plug it into the Telegram bot. 
-    # Do not forget to import all needed dependencies when you do so.
     
     # simple_manager = SimpleDialogueManager()
     # bot = BotHandler(token, simple_manager)
@@ -92,7 +84,6 @@ def main():
     dialog_manager = DialogueManager(RESOURCE_PATH)
     bot = BotHandler(token, dialog_manager)
 
-    ###############################################################
 
     print("Ready to talk!")
     offset = 0

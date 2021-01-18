@@ -40,14 +40,6 @@ def load_embeddings(embeddings_path):
       embeddings_dim - dimension of the vectors.
     """
     
-    # Hint: you have already implemented a similar routine in the 3rd assignment.
-    # Note that here you also need to know the dimension of the loaded embeddings.
-    # When you load the embeddings, use numpy.float32 type as dtype
-
-    ########################
-    #### YOUR CODE HERE ####
-    ########################
-    
     embeddings = dict()
     for line in open(embeddings_path, encoding='utf-8'):
         row = line.strip().split('\t')
@@ -61,11 +53,6 @@ def load_embeddings(embeddings_path):
 def question_to_vec(question, embeddings, dim):
     """Transforms a string to an embedding by averaging word embeddings."""
     
-    # Hint: you have already implemented exactly this function in the 3rd assignment.
-
-    ########################
-    #### YOUR CODE HERE ####
-    ########################
     result = np.zeros(dim)
     cnt = 0
     words = question.split()

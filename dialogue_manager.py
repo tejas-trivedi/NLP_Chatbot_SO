@@ -21,8 +21,6 @@ class ThreadRanker(object):
             The search is performed across the threads with a given tag.
         """
         thread_ids, thread_embeddings = self.__load_embeddings_by_tag(tag_name)
-
-        # HINT: you have already implemented a similar routine in the 3rd assignment.
         
         question_vec = question_to_vec(question, self.word_embeddings, self.embeddings_dim).reshape(1,-1)
         best_thread = pairwise_distances_argmin(question_vec,thread_embeddings)
@@ -50,34 +48,22 @@ class DialogueManager(object):
     def create_chitchat_bot(self):
         """Initializes self.chitchat_bot with some conversational model."""
 
-        # Hint: you might want to create and train chatterbot.ChatBot here.
-        # It could be done by creating ChatBot with the *trainer* parameter equals 
-        # "chatterbot.trainers.ChatterBotCorpusTrainer"
-        # and then calling *train* function with "chatterbot.corpus.english" param
-
         self.chitchat_bot = ChatBot('Nim Obvious') #, trainer='chatterbot.trainers.ChatterBotCorpusTrainer')
         self.trainer = ChatterBotCorpusTrainer(self.chitchat_bot)
-        #trainer = ChatterBotCorpusTrainer(chitchat_bot)
-        #trainer = self.chitchat_bot
         # Train based on the english corpus
         self.trainer.train("chatterbot.corpus.english")
-        #self.chitchat_bot.train("chatterbot.corpus.english")
 
        
     def generate_answer(self, question):
         """Combines stackoverflow and chitchat parts using intent recognition."""
 
-        # Recognize intent of the question using `intent_recognizer`.
-        # Don't forget to prepare question and calculate features for the question.
-        
+        # Recognize intent of the question using `intent_recognizer`.        
         
         prepared_question = text_prepare(question)
         features = self.tfidf_vectorizer.transform([prepared_question])
         intent = self.intent_recognizer.predict(features)
         
-        
 
-        # Chit-chat part:   
         if intent == 'dialogue':
             # Pass question to chitchat_bot to generate a response.       
             response = self.chitchat_bot.get_response(question)
