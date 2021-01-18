@@ -4,3 +4,7 @@ db.sqlite3-wal
 
 data
 thread_embeddings_by_tags
+
+intent_recognizer.pkl
+tag_classifier.pkl
+tfidf_vectorizer.pkl
