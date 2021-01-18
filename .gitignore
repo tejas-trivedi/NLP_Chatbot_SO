@@ -1,0 +1,6 @@
+db.sqlite3
+db.sqlite3-shm
+db.sqlite3-wal
+
+data
+thread_embeddings_by_tags
